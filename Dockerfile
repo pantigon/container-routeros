@@ -1,6 +1,6 @@
-FROM alpine:3.17.2
+FROM --platform=$BUILDPLATFORM alpine AS build
 
-LABEL maintainer="Manuel Valle <manuvaldi@gmail.com>"
+LABEL maintainer="Huynh Thien <huynhthien92@gmail.com>"
 
 # For access via VNC
 EXPOSE 5900
@@ -20,7 +20,7 @@ RUN set -xe \
     libarchive-tools
 
 # Environments which may be change
-ENV ROUTEROS_VERSON="7.8"
+ENV ROUTEROS_VERSON="7.10.1"
 ENV ROUTEROS_IMAGE="chr-$ROUTEROS_VERSON.img"
 ENV ROUTEROS_PATH="https://download.mikrotik.com/routeros/$ROUTEROS_VERSON/$ROUTEROS_IMAGE"
 
